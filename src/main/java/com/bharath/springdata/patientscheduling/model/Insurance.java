@@ -1,5 +1,8 @@
 package com.bharath.springdata.patientscheduling.model;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Insurance {
 
     private String providerName;

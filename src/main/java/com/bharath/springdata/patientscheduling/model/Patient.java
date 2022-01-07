@@ -1,11 +1,17 @@
 package com.bharath.springdata.patientscheduling.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Patient {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstName;
     private String lastName;
     private String phone;
+    @Embedded
     private Insurance insurance;
 
     public Long getId() {
