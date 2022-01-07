@@ -1,6 +1,7 @@
 package com.bharath.springdata.patientscheduling.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Patient {
@@ -13,6 +14,19 @@ public class Patient {
     private String phone;
     @Embedded
     private Insurance insurance;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "patients_doctors",
+            joinColumns = @JoinColumn(name = "patient_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "doctor_id", referencedColumnName = "id"))
+    private List<Doctor> doctors;
+
+    public List<Doctor> getDoctors() {
+        return doctors;
+    }
+
+    public void setDoctors(List<Doctor> doctors) {
+        this.doctors = doctors;
+    }
 
     public Long getId() {
         return id;

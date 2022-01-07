@@ -1,9 +1,7 @@
 package com.bharath.springdata.patientscheduling.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Doctor {
@@ -14,6 +12,16 @@ public class Doctor {
     private String firstName;
     private String lastName;
     private String speciality;
+    @ManyToMany(mappedBy = "doctors")
+    List<Patient> patients;
+
+    public List<Patient> getPatients() {
+        return patients;
+    }
+
+    public void setPatients(List<Patient> patients) {
+        this.patients = patients;
+    }
 
     public Long getId() {
         return id;
