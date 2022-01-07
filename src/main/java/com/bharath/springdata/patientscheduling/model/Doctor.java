@@ -13,7 +13,18 @@ public class Doctor {
     private String lastName;
     private String speciality;
     @ManyToMany(mappedBy = "doctors")
-    List<Patient> patients;
+    private List<Patient> patients;
+
+    @OneToMany
+    private List<Appointment> appointments;
+
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments = appointments;
+    }
 
     public List<Patient> getPatients() {
         return patients;

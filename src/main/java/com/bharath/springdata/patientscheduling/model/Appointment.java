@@ -1,9 +1,6 @@
 package com.bharath.springdata.patientscheduling.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
@@ -16,6 +13,28 @@ public class Appointment {
     private Boolean started;
     private Boolean ended;
     private String reason;
+
+    @ManyToOne
+    private Patient patient;
+
+    @ManyToOne
+    private Doctor doctor;
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
 
     public Long getId() {
         return id;

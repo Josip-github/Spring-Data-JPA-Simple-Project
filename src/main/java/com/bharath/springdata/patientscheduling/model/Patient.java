@@ -19,6 +19,16 @@ public class Patient {
             joinColumns = @JoinColumn(name = "patient_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "doctor_id", referencedColumnName = "id"))
     private List<Doctor> doctors;
+    @OneToMany
+    private List<Appointment> appointments;
+
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments = appointments;
+    }
 
     public List<Doctor> getDoctors() {
         return doctors;
